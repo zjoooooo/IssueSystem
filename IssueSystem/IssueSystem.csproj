@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2CB065A3-343E-4D82-B8C3-9C08AD2D5DDE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IssueSystem</RootNamespace>
+    <AssemblyName>IssueSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>131.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdventNetSnmp">
+      <HintPath>..\..\..\Barrier Controller C#\AdventNetSnmp.dll</HintPath>
+    </Reference>
+    <Reference Include="IrisSkin4, Version=2006.3.22.45, Culture=neutral, PublicKeyToken=127be25a6db25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\IrisSkin4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telnet">
+      <HintPath>..\..\..\1\Telnet\bin\Debug\Telnet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="carparkDataSet.cs">
+      <DependentUpon>carparkDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="carparkDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>carparkDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="carparkDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>carparkDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeDeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeDeleteUser.Designer.cs">
+      <DependentUpon>ChangeDeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateROissue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateROissue.designer.cs">
+      <DependentUpon>CreateROissue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarrierRemote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarrierRemote.designer.cs">
+      <DependentUpon>BarrierRemote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarrierRemote2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarrierRemote2.designer.cs">
+      <DependentUpon>BarrierRemote2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarrierRemote3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarrierRemote3.designer.cs">
+      <DependentUpon>BarrierRemote3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarparkUserDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarparkUserDelete.designer.cs">
+      <DependentUpon>CarparkUserDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarparkUserUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarparkUserUpdate.designer.cs">
+      <DependentUpon>CarparkUserUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class1Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class1Update.designer.cs">
+      <DependentUpon>Class1Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alert.Designer.cs">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBUtility.cs" />
+    <Compile Include="List.cs">
+      <DependentUpon>List.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="List.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceReport.cs" />
+    <Compile Include="ServiceReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceReportForm.Designer.cs">
+      <DependentUpon>ServiceReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IllegalParking_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IllegalParking_Report.Designer.cs">
+      <DependentUpon>IllegalParking_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issue_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issue_Report.Designer.cs">
+      <DependentUpon>Issue_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogClass.cs" />
+    <Compile Include="ModifyROissue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyROissue.designer.cs">
+      <DependentUpon>ModifyROissue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordCollection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordCollection.Designer.cs">
+      <DependentUpon>PasswordCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PmsVehicleClass.cs" />
+    <Compile Include="PmsUserClass.cs" />
+    <Compile Include="SecureStaffUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SecureStaffUpdate.designer.cs">
+      <DependentUpon>SecureStaffUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SecureStaffDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SecureStaffDelete.designer.cs">
+      <DependentUpon>SecureStaffDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movement.designer.cs">
+      <DependentUpon>Movement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarpark2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputCarpark2.Designer.cs">
+      <DependentUpon>InputCarpark2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceReports.Designer.cs">
+      <DependentUpon>ServiceReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TelnetInterface.cs" />
+    <Compile Include="ToolsUtility.cs" />
+    <Compile Include="窗体淡入淡出效果.cs" />
+    <Compile Include="CreateModifyAttenderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyAttenderList.Designer.cs">
+      <DependentUpon>CreateModifyAttenderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputAttenderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputAttenderList.Designer.cs">
+      <DependentUpon>InputAttenderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateModifyIssueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyIssueList.Designer.cs">
+      <DependentUpon>CreateModifyIssueList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputIssueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputIssueList.Designer.cs">
+      <DependentUpon>InputIssueList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateModifyCarpark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyCarpark.Designer.cs">
+      <DependentUpon>CreateModifyCarpark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarpark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputCarpark.Designer.cs">
+      <DependentUpon>InputCarpark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyIssue.Designer.cs">
+      <DependentUpon>ModifyIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateIssue.Designer.cs">
+      <DependentUpon>CreateIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SQLHelper.cs" />
+    <EmbeddedResource Include="ChangeDeleteUser.resx">
+      <DependentUpon>ChangeDeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarrierRemote.resx">
+      <DependentUpon>BarrierRemote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarrierRemote2.resx">
+      <DependentUpon>BarrierRemote2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarrierRemote3.resx">
+      <DependentUpon>BarrierRemote3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarparkUserDelete.resx">
+      <DependentUpon>CarparkUserDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarparkUserUpdate.resx">
+      <DependentUpon>CarparkUserUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class1Update.resx">
+      <DependentUpon>Class1Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alert.resx">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateROissue.resx">
+      <DependentUpon>CreateROissue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceReports.rdlc" />
+    <EmbeddedResource Include="ServiceReportForm.resx">
+      <DependentUpon>ServiceReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IllegalParking_Report.resx">
+      <DependentUpon>IllegalParking_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyROissue.resx">
+      <DependentUpon>ModifyROissue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordCollection.resx">
+      <DependentUpon>PasswordCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issue_Report.resx">
+      <DependentUpon>Issue_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issue_Report.rdlc" />
+    <EmbeddedResource Include="IllegalParking_Report.rdlc" />
+    <EmbeddedResource Include="SecureStaffUpdate.resx">
+      <DependentUpon>SecureStaffUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SecureStaffDelete.resx">
+      <DependentUpon>SecureStaffDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movement.resx">
+      <DependentUpon>Movement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyAttenderList.resx">
+      <DependentUpon>CreateModifyAttenderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputAttenderList.resx">
+      <DependentUpon>InputAttenderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyIssueList.resx">
+      <DependentUpon>CreateModifyIssueList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputIssueList.resx">
+      <DependentUpon>InputIssueList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyCarpark.resx">
+      <DependentUpon>CreateModifyCarpark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCarpark.resx">
+      <DependentUpon>InputCarpark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyIssue.resx">
+      <DependentUpon>ModifyIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateIssue.resx">
+      <DependentUpon>CreateIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCarpark2.resx">
+      <DependentUpon>InputCarpark2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceReports.resx">
+      <DependentUpon>ServiceReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="bin\Debug\Skins\CalmnessColor1.ssk" />
+    <None Include="bin\Debug\Skins\DeepCyan.ssk" />
+    <None Include="bin\Debug\Skins\DiamondPurple.ssk" />
+    <None Include="bin\Debug\Skins\DiamondRed.ssk" />
+    <None Include="bin\Debug\Skins\Emerald.ssk" />
+    <None Include="bin\Debug\Skins\MacOS.ssk" />
+    <None Include="carparkDataSet.xsc">
+      <DependentUpon>carparkDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="carparkDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>carparkDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="carparkDataSet.xss">
+      <DependentUpon>carparkDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="carparkDataSet1.xsc">
+      <DependentUpon>carparkDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="carparkDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>carparkDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="carparkDataSet1.xss">
+      <DependentUpon>carparkDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="List.xsc">
+      <DependentUpon>List.xsd</DependentUpon>
+    </None>
+    <None Include="List.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="List.xss">
+      <DependentUpon>List.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="131.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
