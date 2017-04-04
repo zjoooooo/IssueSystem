@@ -1074,6 +1074,10 @@ namespace IssueSystem
             sr.Show();
         }
 
-
+        private void barrierOpenReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BarrierOpenReport bor = new BarrierOpenReport();
+            bor.Show();
+        }
     }
 }

@@ -99,6 +99,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.barrierOpenReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -240,7 +241,8 @@
             this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem4,
             this.carparkIssueToolStripMenuItem,
-            this.serviceReportToolStripMenuItem});
+            this.serviceReportToolStripMenuItem,
+            this.barrierOpenReportToolStripMenuItem});
             this.reportToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
@@ -900,6 +902,15 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // barrierOpenReportToolStripMenuItem
+            // 
+            this.barrierOpenReportToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
+            this.barrierOpenReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.barrierOpenReportToolStripMenuItem.Name = "barrierOpenReportToolStripMenuItem";
+            this.barrierOpenReportToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
+            this.barrierOpenReportToolStripMenuItem.Text = "Barrier Open Report";
+            this.barrierOpenReportToolStripMenuItem.Click += new System.EventHandler(this.barrierOpenReportToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1014,8 +1025,6 @@
         public System.Windows.Forms.Button button6;
         public System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer3;
-
-
-
+        private System.Windows.Forms.ToolStripMenuItem barrierOpenReportToolStripMenuItem;
     }
 }

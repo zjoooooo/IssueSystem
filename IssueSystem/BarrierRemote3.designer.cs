@@ -57,6 +57,18 @@
             this.LBENTRY3 = new System.Windows.Forms.CheckBox();
             this.SENTRY = new System.Windows.Forms.CheckBox();
             this.SEXIT = new System.Windows.Forms.CheckBox();
+            this.SEXIT2 = new System.Windows.Forms.CheckBox();
+            this.SENTRY2 = new System.Windows.Forms.CheckBox();
+            this.SEXIT3 = new System.Windows.Forms.CheckBox();
+            this.SENTRY3 = new System.Windows.Forms.CheckBox();
+            this.SENTRY4 = new System.Windows.Forms.CheckBox();
+            this.SEXIT4 = new System.Windows.Forms.CheckBox();
+            this.SEXIT5 = new System.Windows.Forms.CheckBox();
+            this.SENTRY5 = new System.Windows.Forms.CheckBox();
+            this.SEXIT6 = new System.Windows.Forms.CheckBox();
+            this.SENTRY6 = new System.Windows.Forms.CheckBox();
+            this.SEXIT7 = new System.Windows.Forms.CheckBox();
+            this.SENTRY7 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +94,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.button1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(71, 284);
+            this.button1.Location = new System.Drawing.Point(71, 329);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 23);
             this.button1.TabIndex = 2;
@@ -95,7 +107,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.button2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(393, 284);
+            this.button2.Location = new System.Drawing.Point(368, 329);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 23);
             this.button2.TabIndex = 3;
@@ -391,12 +403,168 @@
             this.SEXIT.Text = "SEXIT";
             this.SEXIT.UseVisualStyleBackColor = true;
             // 
+            // SEXIT2
+            // 
+            this.SEXIT2.AutoSize = true;
+            this.SEXIT2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEXIT2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SEXIT2.Location = new System.Drawing.Point(384, 188);
+            this.SEXIT2.Name = "SEXIT2";
+            this.SEXIT2.Size = new System.Drawing.Size(68, 18);
+            this.SEXIT2.TabIndex = 29;
+            this.SEXIT2.Text = "SEXIT2";
+            this.SEXIT2.UseVisualStyleBackColor = true;
+            // 
+            // SENTRY2
+            // 
+            this.SENTRY2.AutoSize = true;
+            this.SENTRY2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SENTRY2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SENTRY2.Location = new System.Drawing.Point(384, 164);
+            this.SENTRY2.Name = "SENTRY2";
+            this.SENTRY2.Size = new System.Drawing.Size(75, 18);
+            this.SENTRY2.TabIndex = 28;
+            this.SENTRY2.Text = "SENTRY2";
+            this.SENTRY2.UseVisualStyleBackColor = true;
+            // 
+            // SEXIT3
+            // 
+            this.SEXIT3.AutoSize = true;
+            this.SEXIT3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEXIT3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SEXIT3.Location = new System.Drawing.Point(384, 234);
+            this.SEXIT3.Name = "SEXIT3";
+            this.SEXIT3.Size = new System.Drawing.Size(68, 18);
+            this.SEXIT3.TabIndex = 31;
+            this.SEXIT3.Text = "SEXIT3";
+            this.SEXIT3.UseVisualStyleBackColor = true;
+            // 
+            // SENTRY3
+            // 
+            this.SENTRY3.AutoSize = true;
+            this.SENTRY3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SENTRY3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SENTRY3.Location = new System.Drawing.Point(384, 210);
+            this.SENTRY3.Name = "SENTRY3";
+            this.SENTRY3.Size = new System.Drawing.Size(75, 18);
+            this.SENTRY3.TabIndex = 30;
+            this.SENTRY3.Text = "SENTRY3";
+            this.SENTRY3.UseVisualStyleBackColor = true;
+            // 
+            // SENTRY4
+            // 
+            this.SENTRY4.AutoSize = true;
+            this.SENTRY4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SENTRY4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SENTRY4.Location = new System.Drawing.Point(71, 284);
+            this.SENTRY4.Name = "SENTRY4";
+            this.SENTRY4.Size = new System.Drawing.Size(75, 18);
+            this.SENTRY4.TabIndex = 33;
+            this.SENTRY4.Text = "SENTRY4";
+            this.SENTRY4.UseVisualStyleBackColor = true;
+            // 
+            // SEXIT4
+            // 
+            this.SEXIT4.AutoSize = true;
+            this.SEXIT4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEXIT4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SEXIT4.Location = new System.Drawing.Point(71, 260);
+            this.SEXIT4.Name = "SEXIT4";
+            this.SEXIT4.Size = new System.Drawing.Size(68, 18);
+            this.SEXIT4.TabIndex = 32;
+            this.SEXIT4.Text = "SEXIT4";
+            this.SEXIT4.UseVisualStyleBackColor = true;
+            // 
+            // SEXIT5
+            // 
+            this.SEXIT5.AutoSize = true;
+            this.SEXIT5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEXIT5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SEXIT5.Location = new System.Drawing.Point(176, 284);
+            this.SEXIT5.Name = "SEXIT5";
+            this.SEXIT5.Size = new System.Drawing.Size(68, 18);
+            this.SEXIT5.TabIndex = 35;
+            this.SEXIT5.Text = "SEXIT5";
+            this.SEXIT5.UseVisualStyleBackColor = true;
+            // 
+            // SENTRY5
+            // 
+            this.SENTRY5.AutoSize = true;
+            this.SENTRY5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SENTRY5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SENTRY5.Location = new System.Drawing.Point(176, 260);
+            this.SENTRY5.Name = "SENTRY5";
+            this.SENTRY5.Size = new System.Drawing.Size(75, 18);
+            this.SENTRY5.TabIndex = 34;
+            this.SENTRY5.Text = "SENTRY5";
+            this.SENTRY5.UseVisualStyleBackColor = true;
+            // 
+            // SEXIT6
+            // 
+            this.SEXIT6.AutoSize = true;
+            this.SEXIT6.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEXIT6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SEXIT6.Location = new System.Drawing.Point(277, 284);
+            this.SEXIT6.Name = "SEXIT6";
+            this.SEXIT6.Size = new System.Drawing.Size(68, 18);
+            this.SEXIT6.TabIndex = 37;
+            this.SEXIT6.Text = "SEXIT6";
+            this.SEXIT6.UseVisualStyleBackColor = true;
+            // 
+            // SENTRY6
+            // 
+            this.SENTRY6.AutoSize = true;
+            this.SENTRY6.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SENTRY6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SENTRY6.Location = new System.Drawing.Point(277, 260);
+            this.SENTRY6.Name = "SENTRY6";
+            this.SENTRY6.Size = new System.Drawing.Size(75, 18);
+            this.SENTRY6.TabIndex = 36;
+            this.SENTRY6.Text = "SENTRY6";
+            this.SENTRY6.UseVisualStyleBackColor = true;
+            // 
+            // SEXIT7
+            // 
+            this.SEXIT7.AutoSize = true;
+            this.SEXIT7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEXIT7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SEXIT7.Location = new System.Drawing.Point(384, 284);
+            this.SEXIT7.Name = "SEXIT7";
+            this.SEXIT7.Size = new System.Drawing.Size(68, 18);
+            this.SEXIT7.TabIndex = 39;
+            this.SEXIT7.Text = "SEXIT7";
+            this.SEXIT7.UseVisualStyleBackColor = true;
+            // 
+            // SENTRY7
+            // 
+            this.SENTRY7.AutoSize = true;
+            this.SENTRY7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SENTRY7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SENTRY7.Location = new System.Drawing.Point(384, 260);
+            this.SENTRY7.Name = "SENTRY7";
+            this.SENTRY7.Size = new System.Drawing.Size(75, 18);
+            this.SENTRY7.TabIndex = 38;
+            this.SENTRY7.Text = "SENTRY7";
+            this.SENTRY7.UseVisualStyleBackColor = true;
+            // 
             // BarrierRemote3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(154)))), ((int)(((byte)(208)))));
-            this.ClientSize = new System.Drawing.Size(587, 336);
+            this.ClientSize = new System.Drawing.Size(587, 413);
+            this.Controls.Add(this.SEXIT7);
+            this.Controls.Add(this.SENTRY7);
+            this.Controls.Add(this.SEXIT6);
+            this.Controls.Add(this.SENTRY6);
+            this.Controls.Add(this.SEXIT5);
+            this.Controls.Add(this.SENTRY5);
+            this.Controls.Add(this.SENTRY4);
+            this.Controls.Add(this.SEXIT4);
+            this.Controls.Add(this.SEXIT3);
+            this.Controls.Add(this.SENTRY3);
+            this.Controls.Add(this.SEXIT2);
+            this.Controls.Add(this.SENTRY2);
             this.Controls.Add(this.SEXIT);
             this.Controls.Add(this.SENTRY);
             this.Controls.Add(this.LBENTRY3);
@@ -467,5 +635,17 @@
         private System.Windows.Forms.CheckBox LBENTRY3;
         private System.Windows.Forms.CheckBox SENTRY;
         private System.Windows.Forms.CheckBox SEXIT;
+        private System.Windows.Forms.CheckBox SEXIT2;
+        private System.Windows.Forms.CheckBox SENTRY2;
+        private System.Windows.Forms.CheckBox SEXIT3;
+        private System.Windows.Forms.CheckBox SENTRY3;
+        private System.Windows.Forms.CheckBox SENTRY4;
+        private System.Windows.Forms.CheckBox SEXIT4;
+        private System.Windows.Forms.CheckBox SEXIT5;
+        private System.Windows.Forms.CheckBox SENTRY5;
+        private System.Windows.Forms.CheckBox SEXIT6;
+        private System.Windows.Forms.CheckBox SENTRY6;
+        private System.Windows.Forms.CheckBox SEXIT7;
+        private System.Windows.Forms.CheckBox SENTRY7;
     }
 }

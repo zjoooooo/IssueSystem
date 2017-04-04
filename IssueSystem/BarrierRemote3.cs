@@ -106,7 +106,7 @@ namespace IssueSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-                    CheckBox[] chb = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT };
+                    CheckBox[] chb = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT,SENTRY2,SEXIT2,SENTRY3,SEXIT3, SENTRY4, SEXIT4, SENTRY5, SEXIT5, SENTRY6, SEXIT6, SENTRY7, SEXIT7 };
                     if ((textBox1.Text == "")||(char.IsNumber(textBox1.Text, 0)))
                     {
                         if(textBox1.Text == "")
@@ -126,7 +126,7 @@ namespace IssueSystem
                         string x = null;
                         foreach (XmlNode xl in childkey)
                         {
-                            if (xl.Name.ToString() == textBox1.Text)
+                            if (xl.Name.ToString() == textBox1.Text.Trim())
                             { MessageBox.Show("CarPark Already Exist In The List"); x = xl.Name; break; }
 
                         }
@@ -145,9 +145,7 @@ namespace IssueSystem
                                     XmlElement xelAuthor = doc.CreateElement(ch.Name);
                                     xelAuthor.InnerText = ch.Name;
                                     xelKey.AppendChild(xelAuthor);
-
                                 }
-
                             }
                             root.AppendChild(xelKey);
                             doc.Save(path);
@@ -165,5 +163,7 @@ namespace IssueSystem
         {
             this.Close();
         }
+
+   
     }
 }

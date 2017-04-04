@@ -28,8 +28,8 @@ namespace IssueSystem
         {
 
             InitializeComponent();
-        //    this.skinEngine2.SkinFile = Application.StartupPath + "/Skins/Calmness.ssk";
-        //    skinEngine2.SkinAllForm = true;
+            //    this.skinEngine2.SkinFile = Application.StartupPath + "/Skins/Calmness.ssk";
+            //    skinEngine2.SkinAllForm = true;
 
         }
 
@@ -49,13 +49,13 @@ namespace IssueSystem
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
             XmlNode root = doc.SelectSingleNode("CARPARK");
-            XmlNodeList childkey = root.ChildNodes;        
+            XmlNodeList childkey = root.ChildNodes;
             foreach (XmlNode xl in childkey)
             {
                 listBox1.Items.Add(xl.Name);
 
             }
-        
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -71,9 +71,9 @@ namespace IssueSystem
             }
             if (processCount > 1)  //If running close current process
             {
-                
+
                 DialogResult dr;
-                dr = MessageBox.Show(Process.GetCurrentProcess().ProcessName + " Porgram is running！", "quit", MessageBoxButtons.OK, MessageBoxIcon.Error);             
+                dr = MessageBox.Show(Process.GetCurrentProcess().ProcessName + " Porgram is running！", "quit", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit(); //Exit;   
 
             }
@@ -82,7 +82,7 @@ namespace IssueSystem
             refresh();   //get carpark list from xml
             setdefault(); //set all checkbox visable to false;
             toolStripStatusLabel1.Text = null;
-            toolStripStatusLabel2.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"); 
+            toolStripStatusLabel2.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Enabled = true;
             timer1.Interval = 1000;
@@ -101,7 +101,6 @@ namespace IssueSystem
         public static extern int GetClassLong(IntPtr hwnd, int nIndex);
 
         #endregion
-
         #region  //点击taskbar最小化窗口
         const int WS_MINIMIZEBOX = 0x20000;
         const int CS_DBLCLKS = 0x8;
@@ -116,7 +115,6 @@ namespace IssueSystem
             }
         }
         #endregion
-
         #region //自画无边框
         const int Guying_HTLEFT = 10;
         const int Guying_HTRIGHT = 11;
@@ -182,9 +180,9 @@ namespace IssueSystem
             adventnet.snmp.snmp2.SnmpVar mvar = adventnet.snmp.snmp2.SnmpVar.CreateVariable(SetValue, dataType);
             objPDU.AddVariableBinding(new adventnet.snmp.snmp2.SnmpVarBind(objOID, mvar));
             objResultPDU = objSession.SyncSend(objPDU);
-            int[] x=objSession.CheckResponses();
-         //   MessageBox.Show(x.ToString());
-          //  int[] x = { 1, 2, 3, 4 };
+            int[] x = objSession.CheckResponses();
+            //   MessageBox.Show(x.ToString());
+            //  int[] x = { 1, 2, 3, 4 };
             //foreach (int i in x)
             //{
             //    MessageBox.Show(i.ToString());
@@ -192,9 +190,8 @@ namespace IssueSystem
             objSession.Close();
             objAPI.Close();
             return 1;
-            
-        }
 
+        }
         //public adventnet.snmp.snmp2.SnmpPDU snmpGet(String IPaddress, int Port, String OID, String Community)
         //{
 
@@ -217,71 +214,68 @@ namespace IssueSystem
         //objAPI.Close();
         //return objResultPDU;
         //}
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabel2.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             toolStripStatusLabel1.Text = "WELCOME TO BARRIER CONTROLLER SYSTEM！";
         }
-
         public bool Ping(string ip)
         {
 
             if (!(ip == null))
             {
 
-            int timeout = 1000;
-            string data = "Test Data!";
-            Ping p = new Ping();
-            PingOptions options = new PingOptions();
-            options.DontFragment = true; byte[] buffer = Encoding.ASCII.GetBytes(data);
-            PingReply reply = p.Send(ip, timeout, buffer, options);
-            if (reply.Status == IPStatus.Success) return true; else return false;
+                int timeout = 1000;
+                string data = "Test Data!";
+                Ping p = new Ping();
+                PingOptions options = new PingOptions();
+                options.DontFragment = true; byte[] buffer = Encoding.ASCII.GetBytes(data);
+                PingReply reply = p.Send(ip, timeout, buffer, options);
+                if (reply.Status == IPStatus.Success) return true; else return false;
             }
             else return false;
-            
-        }
 
+        }
         public void run(string str)
         {
-            CheckBox[] Checkclear = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT };
+            CheckBox[] Checkclear = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT, SENTRY2, SEXIT2, SENTRY3, SEXIT3, SENTRY4, SEXIT4, SENTRY5, SEXIT5, SENTRY6, SEXIT6, SENTRY7, SEXIT7 };
 
             foreach (CheckBox clear in Checkclear)
-            {               
+            {
 
                 if (clear.Visible && clear.Checked) //check which barrier needs to trigger
                 {
-                  string keyname = listBox1.SelectedItem.ToString() + clear.Name.ToString();
+                    string keyname = listBox1.SelectedItem.ToString() + clear.Name.ToString();
                     //  int result1 = SNMP_SET(Getv[i], 161, arraymib[i], adventnet.snmp.snmp2.SnmpAPI.INTEGER, "1", "private"); getlabel(Checkclear[i].Name).ForeColor = Color.FromKnownColor(KnownColor.Green);
-                  string ip = GetValue(listBox1.SelectedItem.ToString() + clear.Name.ToString() + "IP");
-                  string rely = getMib(GetValue(listBox1.SelectedItem.ToString() + clear.Name.ToString() + "RELY"));
-                  if (Ping(ip))   
-                    
-                    if (str == "open")
-                    {
+                    string ip = GetValue(listBox1.SelectedItem.ToString() + clear.Name.ToString() + "IP");
+                    string rely = getMib(GetValue(listBox1.SelectedItem.ToString() + clear.Name.ToString() + "RELY"));
+                    if (Ping(ip))
 
-                        int result = SNMP_SET(ip, 161, rely, adventnet.snmp.snmp2.SnmpAPI.INTEGER, "1", "private");
-                        LogClass.WirteLine("ip=" + ip + ",port=161,mib=" + rely + ",adventnet.snmp.snmp2.SnmpAPI.INTEGER=" + adventnet.snmp.snmp2.SnmpAPI.INTEGER+",setvalue=1,community=private");
-                          if(!(listBox2.Items.Contains(keyname)))
-                              listBox2.Items.Add(keyname);
-                          
-                          clear.Checked = false;
-                   
-                    }
+                        if (str == "open")
+                        {
+
+                            int result = SNMP_SET(ip, 161, rely, adventnet.snmp.snmp2.SnmpAPI.INTEGER, "1", "private");
+                            LogClass.WirteLine("ip=" + ip + ",port=161,mib=" + rely + ",adventnet.snmp.snmp2.SnmpAPI.INTEGER=" + adventnet.snmp.snmp2.SnmpAPI.INTEGER + ",setvalue=1,community=private");
+                            if (!(listBox2.Items.Contains(keyname)))
+                                listBox2.Items.Add(keyname);
+
+                            clear.Checked = false;
+
+                        }
+                        else
+                        {
+                            int result = SNMP_SET(ip, 161, rely, adventnet.snmp.snmp2.SnmpAPI.INTEGER, "0", "private");
+                            LogClass.WirteLine("ip=" + ip + ",port=161,mib=" + rely + ",adventnet.snmp.snmp2.SnmpAPI.INTEGER=" + adventnet.snmp.snmp2.SnmpAPI.INTEGER + ",setvalue=1,community=private");
+                            //    clear.ForeColor = System.Drawing.SystemColors.Control;
+                            clear.Checked = false;
+                            if (listBox2.Items.Contains(keyname))
+                                listBox2.Items.Remove(keyname);
+
+                        } //check is open or close
+                          //   int result = SNMP_SET(Getv[i], 161, arraymib[i], adventnet.snmp.snmp2.SnmpAPI.INTEGER, "1", "private"); getlabel(Checkclear[i].Name).ForeColor = Color.FromKnownColor(KnownColor.Green);
+
                     else
-                    {
-                        int result = SNMP_SET(ip, 161, rely, adventnet.snmp.snmp2.SnmpAPI.INTEGER, "0", "private");
-                        LogClass.WirteLine("ip=" + ip + ",port=161,mib=" + rely + ",adventnet.snmp.snmp2.SnmpAPI.INTEGER=" + adventnet.snmp.snmp2.SnmpAPI.INTEGER + ",setvalue=1,community=private");
-                    //    clear.ForeColor = System.Drawing.SystemColors.Control;
-                        clear.Checked = false;
-                        if(listBox2.Items.Contains(keyname))
-                        listBox2.Items.Remove(keyname);
-
-                    } //check is open or close
-                    //   int result = SNMP_SET(Getv[i], 161, arraymib[i], adventnet.snmp.snmp2.SnmpAPI.INTEGER, "1", "private"); getlabel(Checkclear[i].Name).ForeColor = Color.FromKnownColor(KnownColor.Green);
-                   
-                    else 
-                    { MessageBox.Show("Ping command can't get reply from IP : "+ip);}
+                    { MessageBox.Show("Ping command can't get reply from IP : " + ip); }
 
                 } // check if selected and visible
 
@@ -289,136 +283,127 @@ namespace IssueSystem
 
 
         }   //main method
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             run("open"); //run  opem barrier
-       
-        }
 
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             run("close");
         }
-
-
-
         public void setdefault()
         {
-            CheckBox[] Checkclear = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT };
+            CheckBox[] Checkclear = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT, SENTRY2, SEXIT2, SENTRY3, SEXIT3, SENTRY4, SEXIT4, SENTRY5, SEXIT5, SENTRY6, SEXIT6, SENTRY7, SEXIT7 };
             foreach (CheckBox clear in Checkclear)
             {
 
                 clear.Checked = false;
-                clear.Visible = false;         
+                clear.Visible = false;
 
             }
         }
-
         public string getMib(string point) //mib for barrier controller
-            {
-      
-                    Dictionary<string, string> it = new Dictionary<string, string>();
-                    it.Add("1", ".1.3.6.1.4.1.19865.1.2.1.1.0");
-                    it.Add("2", ".1.3.6.1.4.1.19865.1.2.1.2.0");
-                    it.Add("3", ".1.3.6.1.4.1.19865.1.2.1.3.0");
-                    it.Add("4", ".1.3.6.1.4.1.19865.1.2.1.4.0");
-                    it.Add("5", ".1.3.6.1.4.1.19865.1.2.1.5.0");
-                    it.Add("6", ".1.3.6.1.4.1.19865.1.2.1.6.0");
-                    it.Add("7", ".1.3.6.1.4.1.19865.1.2.1.7.0");
-                    it.Add("8", ".1.3.6.1.4.1.19865.1.2.1.8.0");
-                    it.Add("9", ".1.3.6.1.4.1.19865.1.2.2.1.0");
-                    it.Add("10", ".1.3.6.1.4.1.19865.1.2.2.2.0");
-                    it.Add("11", ".1.3.6.1.4.1.19865.1.2.2.3.0");
-                    it.Add("12", ".1.3.6.1.4.1.19865.1.2.2.4.0");
-                    it.Add("13", ".1.3.6.1.4.1.19865.1.2.2.5.0");
-                    it.Add("14", ".1.3.6.1.4.1.19865.1.2.2.6.0");
-                    it.Add("15", ".1.3.6.1.4.1.19865.1.2.2.7.0");
-                    it.Add("16", ".1.3.6.1.4.1.19865.1.2.2.8.0");
-                    if (it.ContainsKey(point))
-                        return it[point];
-                    else
-                        return it["1"];
-            
+        {
+            Dictionary<string, string> it = new Dictionary<string, string>();
+            it.Add("1", ".1.3.6.1.4.1.19865.1.2.1.1.0");
+            it.Add("2", ".1.3.6.1.4.1.19865.1.2.1.2.0");
+            it.Add("3", ".1.3.6.1.4.1.19865.1.2.1.3.0");
+            it.Add("4", ".1.3.6.1.4.1.19865.1.2.1.4.0");
+            it.Add("5", ".1.3.6.1.4.1.19865.1.2.1.5.0");
+            it.Add("6", ".1.3.6.1.4.1.19865.1.2.1.6.0");
+            it.Add("7", ".1.3.6.1.4.1.19865.1.2.1.7.0");
+            it.Add("8", ".1.3.6.1.4.1.19865.1.2.1.8.0");
+            it.Add("9", ".1.3.6.1.4.1.19865.1.2.2.1.0");
+            it.Add("10", ".1.3.6.1.4.1.19865.1.2.2.2.0");
+            it.Add("11", ".1.3.6.1.4.1.19865.1.2.2.3.0");
+            it.Add("12", ".1.3.6.1.4.1.19865.1.2.2.4.0");
+            it.Add("13", ".1.3.6.1.4.1.19865.1.2.2.5.0");
+            it.Add("14", ".1.3.6.1.4.1.19865.1.2.2.6.0");
+            it.Add("15", ".1.3.6.1.4.1.19865.1.2.2.7.0");
+            it.Add("16", ".1.3.6.1.4.1.19865.1.2.2.8.0");
+            if (it.ContainsKey(point))
+                return it[point];
+            else
+                return it["1"];
+
 
         }
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.Items.Count == 0)
+            {
 
-  private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-   {
-       if (listBox1.Items.Count== 0)
-       {
+            }
+            else
+            {
+                if (listBox1.SelectedIndex == -1)
+                {
+                    setdefault(); listBox1.SelectedIndex = 0;
+                }
+                setdefault();
+                //  MessageBox.Show(listBox1.SelectedIndex.ToString());
+                string y = (string)listBox1.SelectedItem;
+                //    MessageBox.Show(y);
+                string path = Application.StartupPath + "\\system.xml";
 
-       }
-       else
-       {
-           if (listBox1.SelectedIndex == -1)
-           {
-               setdefault(); listBox1.SelectedIndex = 0;
-           }
-           setdefault();
-         //  MessageBox.Show(listBox1.SelectedIndex.ToString());
-           string y = (string)listBox1.SelectedItem;
-       //    MessageBox.Show(y);
-           string path = Application.StartupPath + "\\system.xml";
+                XmlDocument doc = new XmlDocument();
+                doc.Load(path);
+                XmlNode root = doc.SelectSingleNode("CARPARK");
+                XmlNodeList childkey = root.ChildNodes;
 
-           XmlDocument doc = new XmlDocument();
-           doc.Load(path);
-           XmlNode root = doc.SelectSingleNode("CARPARK");
-           XmlNodeList childkey = root.ChildNodes;
+                XmlNode carpark = root.SelectSingleNode(y);
+                XmlNodeList station = carpark.ChildNodes;
+                CheckBox[] Checkclear = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT, SENTRY2, SEXIT2, SENTRY3, SEXIT3, SENTRY4, SEXIT4, SENTRY5, SEXIT5, SENTRY6, SEXIT6, SENTRY7, SEXIT7 };
+                foreach (XmlNode x in station)
+                {
+                    foreach (CheckBox ch in Checkclear)
+                    {
+                        if (ch.Text == x.Name)
+                        {
+                            ch.Visible = true;
 
-           XmlNode carpark = root.SelectSingleNode(y);
-           XmlNodeList station = carpark.ChildNodes;
-           CheckBox[] Checkclear = { ENTRY1, EXIT1, ENTRY2, EXIT2, ENTRY3, EXIT3, ENTRY4, EXIT4, ENTRY5, EXIT5, ENTRY6, EXIT6, ENTRY7, EXIT7, ENTRY8, EXIT8, LBENTRY1, LBENTRY2, LBENTRY3, LBEXIT1, LBEXIT2, LBEXIT3, SENTRY, SEXIT };
-           foreach (XmlNode x in station)
-           {
-               foreach (CheckBox ch in Checkclear)
-               {
-                   if (ch.Text == x.Name)
-                   {
-                       ch.Visible = true;
+                        }
+                    }
+                }
+            }
 
-                   }
-               }
-           }
-       }
-       
-   }
-  private void button3_Click(object sender, EventArgs e)
-  {
-      BarrierRemote3 frm3 = new BarrierRemote3(this);
-      frm3.ShowDialog();
-  }
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            BarrierRemote3 frm3 = new BarrierRemote3(this);
+            frm3.ShowDialog();
+        }
 
-  private void button4_Click(object sender, EventArgs e)
-  {
-       DialogResult dialogResult = MessageBox.Show("Are you sure to delete this data", "Warning", MessageBoxButtons.YesNo);
-       if (dialogResult == DialogResult.Yes)
-       {
-           if (listBox1.Items.Count == 0)
-           {
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to delete this data", "Warning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (listBox1.Items.Count == 0)
+                {
 
-           }
-           else
-           {
-               string y = listBox1.SelectedItem.ToString();
-               string path = Application.StartupPath + "\\system.xml";
+                }
+                else
+                {
+                    string y = listBox1.SelectedItem.ToString();
+                    string path = Application.StartupPath + "\\system.xml";
 
-               XmlDocument doc = new XmlDocument();
-               doc.Load(path);
-               XmlNode root = doc.SelectSingleNode("CARPARK");
-               // XmlNodeList childkey = root.ChildNodes;
-               XmlNode carpark = root.SelectSingleNode(y);
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(path);
+                    XmlNode root = doc.SelectSingleNode("CARPARK");
+                    // XmlNodeList childkey = root.ChildNodes;
+                    XmlNode carpark = root.SelectSingleNode(y);
 
-               root.RemoveChild(carpark);
-               this.listBox1.Items.Remove(listBox1.SelectedItem);
-               // listBox1.SelectedIndex = 0;
-               doc.Save(path);
-               setdefault();
-           }
-       }
+                    root.RemoveChild(carpark);
+                    this.listBox1.Items.Remove(listBox1.SelectedItem);
+                    // listBox1.SelectedIndex = 0;
+                    doc.Save(path);
+                    setdefault();
+                }
+            }
 
-  }
+        }
 
         private string GetValue(string key)//Get Value From Configfile.
         {
@@ -426,8 +411,8 @@ namespace IssueSystem
             System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             if (config.AppSettings.Settings[key] == null)
             {
-                
-                
+
+
                 MessageBox.Show("Set IP And Relay Before Run");
                 this.Close();
                 Application.Exit();
@@ -440,14 +425,14 @@ namespace IssueSystem
 
         public int SelectedIndex { get; set; }
 
-     
+
 
         private void OpenFrm2(string x)
         {
 
             BarrierRemote2 br2 = new BarrierRemote2(listBox1.SelectedItem.ToString() + x);
-                br2.ShowDialog();
-            
+            br2.ShowDialog();
+
         }
 
         private void Set_ENTRY1(object sender, KeyEventArgs e)
@@ -698,18 +683,102 @@ namespace IssueSystem
             }
         }
 
-      
+        private void SENTRY2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SENTRY2");
+            }
+        }
 
+        private void SEXIT2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SEXIT2");
+            }
+        }
 
- 
-     
+        private void SENTRY3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SENTRY3");
+            }
+        }
 
+        private void SEXIT3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SEXIT3");
+            }
+        }
 
+        private void SENTRY4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SENTRY4");
+            }
+        }
 
+        private void SEXIT4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SEXIT4");
+            }
+        }
 
+        private void SENTRY5_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SENTRY5");
+            }
+        }
 
+        private void SEXIT5_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SEXIT5");
+            }
+        }
 
+        private void SENTRY6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SENTRY6");
+            }
+        }
+
+        private void SEXIT6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SEXIT6");
+            }
+        }
+
+        private void SENTRY7_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SENTRY7");
+            }
+        }
+
+        private void SEXIT7_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1 && e.Modifiers == Keys.Alt)
+            {
+                OpenFrm2("SEXIT7");
+            }
+        }
     }//Form1 Class
-    
+
 
 }// main

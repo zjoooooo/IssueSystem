@@ -19,7 +19,7 @@ namespace IssueSystem
     public partial class Movement : Form
     {
         Thread objThread = null;
-        DataTable table = new DataTable();
+        DataTable table = null;
         Dictionary<string, string> carparklist = new Dictionary<string, string>();
         Main main;
         delegate void Datagridadd(DataTable dt);
@@ -34,20 +34,31 @@ namespace IssueSystem
         private void InitCarparkList()
         {
             carparklist.Clear();
+            string batchName = comboBox1.Text.Trim();
             string constr = "Data Source=172.16.1.89;uid=secure;pwd=weishenme;database=carpark";
-            string CommandText = @"select name,ip,batch from Whole where batch not in('IPD','commercial')";
-         //   string CommandText = @"select name,ip,batch from Whole where name='KLM'";
+            string CommandText = null;
+            if (batchName.Equals("All"))
+            {
+                 CommandText = @"select name,ip,batch from Whole";
+            }
+            else
+            {
+                 CommandText = @"select name,ip,batch from Whole where batch ='" + batchName + "'";
+            }          
+           // string CommandText = @"select name,ip,batch from Whole where name='BBM5BBM6'";
             DataSet ds = null;
-
-
             try
             {
                 ds = SqlHelper.ExecuteDataset(constr, CommandType.Text, CommandText);
                 foreach (DataRow ls in ds.Tables[0].Rows)
                 {
+                    if (ls[0].ToString().Equals("BE45"))
+                    {
+                        continue;
+                    }
                     carparklist.Add(ls[0].ToString(), ls[1].ToString());
                 }
-
+                
             }
             catch (SqlException e)
             {
@@ -70,12 +81,16 @@ namespace IssueSystem
         {
             try
             {
-                if (table != null)
+                if (table == null)
+                {
+                    table = dt;                   
+                }
+                else
                 {
                     table.Merge(dt);
-                    dataGridView1.DataSource = table;
                 }
-                
+                dataGridView1.DataSource = table;
+
             }
             catch (Exception e)
             {
@@ -141,6 +156,7 @@ namespace IssueSystem
             label5.Text = "";
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = DateTime.Now;
+            comboBox1.SelectedIndex = 0;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -156,8 +172,11 @@ namespace IssueSystem
                 string IU = this.textBox1.Text.Trim();
                 string picker1 = this.dateTimePicker1.Value.ToString("yyyy-MM-dd") + " 00:00:00";
                 string picker2 = this.dateTimePicker2.Value.ToString("yyyy-MM-dd") + " 23:59:59";
-                table.Clear();
-                objThread = new Thread(() => Search(IU, picker1, picker2));
+                if (table != null)
+                {
+                    table.Clear();
+                }
+                objThread = new Thread(() => New_Search(IU, picker1, picker2));
                 objThread.Start();
                 button1.Text = "Stop";
             }
@@ -173,6 +192,7 @@ namespace IssueSystem
                 button1.Text = "Start";
                 button2.Enabled = true;
             }
+            //Testing
         }
         private void Search(string IU, string start_time, string end_time)
         {
@@ -191,7 +211,6 @@ namespace IssueSystem
                                AND (iu_tk_no=@IU
                                OR  card_mc_no=@IU);";
             SqlParameter[] para = new SqlParameter[]{
-
                 new SqlParameter("@IU",IU),
                 new SqlParameter("@start_time",start_time),
                 new SqlParameter("@end_time",end_time)
@@ -203,7 +222,7 @@ namespace IssueSystem
             {
                 this.Invoke(pbstep);
                 this.Invoke(ld, kv.Key);
-                LogClass.WirteLogForMovement("------------------------");
+                LogClass.WirteLogForMovement($"-----------{kv.Key}------------");
                 //if (!Ping(kv.Value))
                 //{
                 //    LogClass.WirteLogForMovement(kv.Key + " can't reply from ping command after 5 seconds waiting.");
@@ -256,6 +275,104 @@ namespace IssueSystem
                 }
 
 
+            }
+            this.Invoke(b2e);
+        }
+
+        private void New_Search(string IU, string start_time, string end_time)
+        {
+            Progressbar pbdefault = new Progressbar(Progressdefault);
+            Progressbar pbstep = new Progressbar(ProgressSetp);
+            Labeldisplay ld = new Labeldisplay(Labelupdate);
+            button2enable b2e = new button2enable(Button2Status);
+            this.Invoke(pbdefault);
+            Datagridadd dd = new Datagridadd(Datagrid);
+            string cmd = @"    SELECT 1 from [dbo].[movement_trans],Trans_type WHERE update_dt BETWEEN @start_time AND @end_time AND (iu_tk_no=@IU OR card_mc_no=@IU) AND entry_time is not null And exit_time is not null
+                               IF EXISTS(SELECT 1 from [dbo].[movement_trans],Trans_type WHERE update_dt BETWEEN @start_time AND @end_time AND (iu_tk_no=@IU OR card_mc_no=@IU) AND entry_time is not null And exit_time is not null)
+                               BEGIN
+                               SELECT site_name,iu_tk_no,trans_type as trans_type_id,entry_station as entry_station_id,entry_time,exit_station as exit_station_id,exit_time,parked_time,parking_fee,paid_amt,card_mc_no FROM [dbo].[movement_trans],site_setup 
+                               WHERE movement_trans.update_dt BETWEEN @start_time AND @end_time AND (iu_tk_no=@IU OR card_mc_no=@IU) AND entry_time is not null And exit_time is not null ORDER BY entry_time;
+                               SELECT station_id,station_name from station_setup;
+                               SELECT Trans_type,Description from Trans_type;
+                               END";
+            SqlParameter[] para = new SqlParameter[]{
+
+                new SqlParameter("@IU",IU),
+                new SqlParameter("@start_time",start_time),
+                new SqlParameter("@end_time",end_time)
+            };
+
+            LogClass.WirteLogForMovement("Start to search iu or cash card : " + IU);
+            Dictionary<string, string> stationDIC = new Dictionary<string, string>();
+            Dictionary<string, string> Trans_type = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, string> kv in carparklist)
+            {
+                this.Invoke(pbstep);
+                this.Invoke(ld, kv.Key);
+                stationDIC.Clear();
+                Trans_type.Clear();
+                LogClass.WirteLogForMovement($"------------{kv.Key}------------");
+                string connectString = "Data Source=" + kv.Value + ";uid=sa;pwd=yzhh2007;database=" + kv.Key;
+                DataSet ds = null;
+                try
+                {
+                    ds = SqlHelper.ExecuteDataset(connectString, CommandType.Text, cmd, para);
+                }
+                catch (Exception sqle)
+                {
+                    LogClass.WirteLogForMovement("Car park " + kv.Key + " error on read data : " + sqle.ToString());
+                    continue;
+                }
+
+                if (ds != null)
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        //Found movement data start to generate
+                        LogClass.WirteLogForMovement("Found data.");
+                        //1.get station id and name
+                        foreach(DataRow dr in ds.Tables[2].Rows)
+                        {
+                            stationDIC.Add(dr["station_id"].ToString(), dr["station_name"].ToString());
+                        }
+                        //2.get trans_type
+                        foreach(DataRow dr in ds.Tables[3].Rows)
+                        {
+                            Trans_type.Add(dr["Trans_type"].ToString(), dr["Description"].ToString());
+                        }
+
+                        DataTable dt = ds.Tables[1];
+                        dt.Columns.Add(new DataColumn("trans_type", typeof(string)));
+                        dt.Columns.Add(new DataColumn("entry_station", typeof(string)));
+                        dt.Columns.Add(new DataColumn("exit_station", typeof(string)));
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            string trans_type_id = dr["trans_type_id"].ToString();
+                            string entry_station_id = dr["entry_station_id"].ToString();
+                            string exit_station_id = dr["exit_station_id"].ToString();
+                            try
+                            {
+                                dr["trans_type"] = Trans_type[trans_type_id];
+                                dr["entry_station"] = stationDIC[entry_station_id];
+                                dr["exit_station"] = stationDIC[exit_station_id];
+                            }                          
+                            catch(SqlException sqle)
+                            {
+                                LogClass.WirteLogForMovement($"trans_type_id={trans_type_id},entry_station_id={entry_station_id},exit_station_id={exit_station_id},{sqle.ToString()}");
+                            }
+                        }
+                        dt.Columns.Remove("trans_type_id");
+                        dt.Columns.Remove("entry_station_id");
+                        dt.Columns.Remove("exit_station_id");
+                        this.Invoke(dd, ds.Tables[1]);
+                    }
+                    else
+                    {
+                        //no data found
+                        LogClass.WirteLogForMovement("No data found.");
+                    }
+                }
+                
             }
             this.Invoke(b2e);
         }

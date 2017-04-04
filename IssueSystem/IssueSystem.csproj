@@ -69,8 +69,8 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -90,6 +90,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarrierOpenReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarrierOpenReport.Designer.cs">
+      <DependentUpon>BarrierOpenReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="carparkDataSet.cs">
       <DependentUpon>carparkDataSet.xsd</DependentUpon>
     </Compile>
@@ -230,6 +236,11 @@
     <Compile Include="ServiceReports.Designer.cs">
       <DependentUpon>ServiceReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="SunparkCentralDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SunparkCentralDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TelnetInterface.cs" />
     <Compile Include="ToolsUtility.cs" />
     <Compile Include="窗体淡入淡出效果.cs" />
@@ -323,6 +334,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SQLHelper.cs" />
+    <EmbeddedResource Include="BarrierOpenReport.resx">
+      <DependentUpon>BarrierOpenReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangeDeleteUser.resx">
       <DependentUpon>ChangeDeleteUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +367,7 @@
     <EmbeddedResource Include="CreateROissue.resx">
       <DependentUpon>CreateROissue.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BarrierOpenReport.rdlc" />
     <EmbeddedResource Include="ServiceReports.rdlc" />
     <EmbeddedResource Include="ServiceReportForm.resx">
       <DependentUpon>ServiceReportForm.cs</DependentUpon>
@@ -469,6 +484,17 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SunparkCentralDataSet.xsc">
+      <DependentUpon>SunparkCentralDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SunparkCentralDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SunparkCentralDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SunparkCentralDataSet.xss">
+      <DependentUpon>SunparkCentralDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
