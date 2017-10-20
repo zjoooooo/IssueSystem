@@ -482,7 +482,7 @@ namespace IssueSystem
                             alert.Location = p;
                             Beautiful.AnimateWindow(alert.Handle, 1000, Beautiful.AW_BLEND);
                             alert.Show();
-                            FirstFresh();
+                           // FirstFresh();
                         }
                     }                       
             }
