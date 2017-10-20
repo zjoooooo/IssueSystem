@@ -161,7 +161,6 @@ namespace IssueSystem
                         dt.Dispose();
                     }
                     catch (SqlException) { };
-
             }
             else
             { return; }

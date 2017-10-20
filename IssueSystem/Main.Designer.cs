@@ -45,6 +45,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.carparkIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barrierOpenReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.microsoftWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +56,7 @@
             this.barrierSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onlyFunctionalAtOfficeIpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barrierRemoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newBarrierRemoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sunJapanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onlyFunctionalAtOfficeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secureStaffVehicleUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +101,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.barrierOpenReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -279,6 +280,15 @@
             this.serviceReportToolStripMenuItem.Text = "Service Report";
             this.serviceReportToolStripMenuItem.Click += new System.EventHandler(this.serviceReportToolStripMenuItem_Click);
             // 
+            // barrierOpenReportToolStripMenuItem
+            // 
+            this.barrierOpenReportToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
+            this.barrierOpenReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.barrierOpenReportToolStripMenuItem.Name = "barrierOpenReportToolStripMenuItem";
+            this.barrierOpenReportToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
+            this.barrierOpenReportToolStripMenuItem.Text = "Barrier Open Report";
+            this.barrierOpenReportToolStripMenuItem.Click += new System.EventHandler(this.barrierOpenReportToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -358,7 +368,8 @@
             // 
             this.barrierSystemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.onlyFunctionalAtOfficeIpToolStripMenuItem,
-            this.barrierRemoteToolStripMenuItem});
+            this.barrierRemoteToolStripMenuItem,
+            this.newBarrierRemoteToolStripMenuItem});
             this.barrierSystemToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barrierSystemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.barrierSystemToolStripMenuItem.Name = "barrierSystemToolStripMenuItem";
@@ -383,6 +394,15 @@
             this.barrierRemoteToolStripMenuItem.Size = new System.Drawing.Size(339, 24);
             this.barrierRemoteToolStripMenuItem.Text = "Barrier Remote";
             this.barrierRemoteToolStripMenuItem.Click += new System.EventHandler(this.barrierRemoteToolStripMenuItem_Click);
+            // 
+            // newBarrierRemoteToolStripMenuItem
+            // 
+            this.newBarrierRemoteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
+            this.newBarrierRemoteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.newBarrierRemoteToolStripMenuItem.Name = "newBarrierRemoteToolStripMenuItem";
+            this.newBarrierRemoteToolStripMenuItem.Size = new System.Drawing.Size(339, 24);
+            this.newBarrierRemoteToolStripMenuItem.Text = "New Barrier Remote";
+            this.newBarrierRemoteToolStripMenuItem.Click += new System.EventHandler(this.newBarrierRemoteToolStripMenuItem_Click);
             // 
             // sunJapanToolStripMenuItem
             // 
@@ -416,6 +436,7 @@
             this.secureStaffVehicleUpdateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteToolStripMenuItem,
             this.update2ToolStripMenuItem1});
+            this.secureStaffVehicleUpdateToolStripMenuItem.Enabled = false;
             this.secureStaffVehicleUpdateToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.secureStaffVehicleUpdateToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.secureStaffVehicleUpdateToolStripMenuItem.Name = "secureStaffVehicleUpdateToolStripMenuItem";
@@ -427,7 +448,7 @@
             this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.deleteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -436,7 +457,7 @@
             this.update2ToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.update2ToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.update2ToolStripMenuItem1.Name = "update2ToolStripMenuItem1";
-            this.update2ToolStripMenuItem1.Size = new System.Drawing.Size(132, 24);
+            this.update2ToolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
             this.update2ToolStripMenuItem1.Text = "Update";
             this.update2ToolStripMenuItem1.Click += new System.EventHandler(this.update2ToolStripMenuItem1_Click);
             // 
@@ -446,6 +467,7 @@
             this.carParkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usToolStripMenuItem,
             this.updateToolStripMenuItem});
+            this.carParkToolStripMenuItem.Enabled = false;
             this.carParkToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.carParkToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.carParkToolStripMenuItem.Name = "carParkToolStripMenuItem";
@@ -457,7 +479,7 @@
             this.usToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.usToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.usToolStripMenuItem.Name = "usToolStripMenuItem";
-            this.usToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.usToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.usToolStripMenuItem.Text = "Delete";
             this.usToolStripMenuItem.Click += new System.EventHandler(this.usToolStripMenuItem_Click);
             // 
@@ -466,7 +488,7 @@
             this.updateToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.updateToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -533,7 +555,7 @@
             this.b26ToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b26ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.b26ToolStripMenuItem.Name = "b26ToolStripMenuItem";
-            this.b26ToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.b26ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.b26ToolStripMenuItem.Text = "B26";
             this.b26ToolStripMenuItem.Click += new System.EventHandler(this.b26ToolStripMenuItem_Click);
             // 
@@ -543,7 +565,7 @@
             this.b28ToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b28ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.b28ToolStripMenuItem.Name = "b28ToolStripMenuItem";
-            this.b28ToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.b28ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.b28ToolStripMenuItem.Text = "B28";
             this.b28ToolStripMenuItem.Click += new System.EventHandler(this.b28ToolStripMenuItem_Click);
             // 
@@ -553,7 +575,7 @@
             this.b30ToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b30ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.b30ToolStripMenuItem.Name = "b30ToolStripMenuItem";
-            this.b30ToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.b30ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.b30ToolStripMenuItem.Text = "B30";
             this.b30ToolStripMenuItem.Click += new System.EventHandler(this.b30ToolStripMenuItem_Click);
             // 
@@ -563,7 +585,7 @@
             this.cLToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cLToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cLToolStripMenuItem.Name = "cLToolStripMenuItem";
-            this.cLToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.cLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cLToolStripMenuItem.Text = "CL";
             this.cLToolStripMenuItem.Click += new System.EventHandler(this.cLToolStripMenuItem_Click);
             // 
@@ -573,7 +595,7 @@
             this.bBToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.bBToolStripMenuItem.Name = "bBToolStripMenuItem";
-            this.bBToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.bBToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bBToolStripMenuItem.Text = "BB";
             this.bBToolStripMenuItem.Click += new System.EventHandler(this.bBToolStripMenuItem_Click);
             // 
@@ -583,7 +605,7 @@
             this.hGToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hGToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.hGToolStripMenuItem.Name = "hGToolStripMenuItem";
-            this.hGToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.hGToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hGToolStripMenuItem.Text = "HG";
             this.hGToolStripMenuItem.Click += new System.EventHandler(this.hGToolStripMenuItem_Click);
             // 
@@ -602,7 +624,7 @@
             this.backupToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
             this.backupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.backupToolStripMenuItem.Text = "Backup";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
@@ -902,15 +924,6 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // barrierOpenReportToolStripMenuItem
-            // 
-            this.barrierOpenReportToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(169)))), ((int)(((byte)(39)))));
-            this.barrierOpenReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.barrierOpenReportToolStripMenuItem.Name = "barrierOpenReportToolStripMenuItem";
-            this.barrierOpenReportToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
-            this.barrierOpenReportToolStripMenuItem.Text = "Barrier Open Report";
-            this.barrierOpenReportToolStripMenuItem.Click += new System.EventHandler(this.barrierOpenReportToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1026,5 +1039,6 @@
         public System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.ToolStripMenuItem barrierOpenReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newBarrierRemoteToolStripMenuItem;
     }
 }

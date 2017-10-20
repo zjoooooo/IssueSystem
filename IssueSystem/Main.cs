@@ -234,12 +234,20 @@ namespace IssueSystem
                             try
                             {
                                 dataGridView1.DataSource = ds.Tables[0];
-                                dataGridView1.Rows[index1 + x1].Selected = true;
+                                if ((index1 + x1 < 0)||(index1+1> dataGridView1.Rows.Count))
+                                {
+                                    dataGridView1.Rows[0].Selected = true;
+                                }
+                                else
+                                {
+                                    dataGridView1.Rows[index1 + x1].Selected = true;
+                                }
+                                
                                 dataGridView1.CurrentCell = dataGridView1.Rows[index1].Cells[0];
                             }
                             catch (Exception e)
                             {
-                                LogClass.WirteLine("Set previous row to current row for dataGridView1 error : " + e.ToString());
+                                LogClass.WirteLine($"Set previous row to current row for dataGridView1 error:index={index1},x1={x1},ds.Tables[0].Rows.Count={ds.Tables[0].Rows.Count},dataGridView1.Rows.Count={dataGridView1.Rows.Count},{e.ToString()}");
                             }
 
                             foreach (DataGridViewRow dr in dataGridView1.Rows)
@@ -273,35 +281,35 @@ namespace IssueSystem
                 }
                 else
                 {
-                    int index2 = 0;
-                    try
-                    {
-                        if (dataGridView2.RowCount <= 0)
-                        {
+                    //int index2 = 0;
+                    //try
+                    //{
+                    //    if (dataGridView2.RowCount <= 0)
+                    //    {
 
-                        }
-                        else
-                        {
-                            index2 = dataGridView2.CurrentRow.Index;
-                        }
+                    //    }
+                    //    else
+                    //    {
+                    //        index2 = dataGridView2.CurrentRow.Index;
+                    //    }
 
-                    }
-                    catch (Exception e)
-                    {
-                        LogClass.WirteLine("Get currentrow for dataGridView2 error : " + e.ToString());
-                    }
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    LogClass.WirteLine("Get currentrow for dataGridView2 error : " + e.ToString());
+                    //}
 
-                    //防止没有任何行数时报错.
-                    if (index2 >= 0)
-                    {
-                        int x2 = ds.Tables[1].Rows.Count - dataGridView2.Rows.Count;
-                        if (x2 > 0 || x2 < 0)
-                        {
+                    ////防止没有任何行数时报错.
+                    //if (index2 >= 0)
+                    //{
+                    //    int x2 = ds.Tables[1].Rows.Count - dataGridView2.Rows.Count;
+                    //    if (x2 > 0 || x2 < 0)
+                    //    {
                             try
                             {
                                 dataGridView2.DataSource = ds.Tables[1];
-                                dataGridView2.Rows[index2 + x2].Selected = true;
-                                dataGridView2.CurrentCell = dataGridView2.Rows[index2].Cells[0];
+                                //dataGridView2.Rows[index2 + x2].Selected = true;
+                                //dataGridView2.CurrentCell = dataGridView2.Rows[index2].Cells[0];
                             }
                             catch (Exception e)
                             {
@@ -328,9 +336,9 @@ namespace IssueSystem
                                     dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Blue;
                                 }
                             }
-                        }
+                        //}
 
-                    }
+                    //}
                 }
 
 
@@ -392,7 +400,7 @@ namespace IssueSystem
    //                        select id,carpark,station,bo,followby,starttime,endtime,issue,solution,item,qty,otstarttime,otendtime,submitby,posttime,ot from [carpark].[dbo].SRtable where starttime>DATEADD(DAY, -7, GETDATE()) ORDER BY starttime DESC;";
             string cmd = @"select ID,CreateTime,CarPark,Station,Issue,Status,Priority,Reportby,CreatedBy,AttendBy from [carpark].[dbo].[IssueTable] where ReportTime>DATEADD(DAY, -2, GETDATE()) OR Status!='Closed' ORDER BY ReportTime DESC;
                            select ID,CarPark,Status,CptaStaff,SpccStaff,RO,Details,ReportToCPTA,TimeGiven,TimeOnSite,ROAcualTimeOnSite,TimeCompletion from [carpark].[dbo].[IllegalParkingTable] where TimeGiven>DATEADD(DAY, -2, GETDATE())  OR Status!='Closed' order by TimeGiven DESC;
-                           select id as ID,linkid as CaseID,posttime as SubmitTime,carpark as CarPark,station as Station,bo as Bo,followby as FollowUp,starttime as StartTime,endtime as EndTime,issue as Issue,solution as Solution,item as Item,qty as Qty,otstarttime as OverTimeStart,otendtime as OverTimeEnd,submitby as SubmitBy,ot as OverTimeMins from [carpark].[dbo].SRtable where starttime>DATEADD(DAY, -3, GETDATE()) ORDER BY starttime DESC;";
+                           select id as ID,linkid as CaseID,posttime as SubmitTime,carpark as CarPark,station as Station,bo as Bo,followby as FollowUp,starttime as StartTime,endtime as EndTime,issue as Issue,solution as Solution,item as Item,qty as Qty,otstarttime as OverTimeStart,otendtime as OverTimeEnd,submitby as SubmitBy,ot as OverTimeMins from [carpark].[dbo].SRtable where starttime>DATEADD(DAY, -2, GETDATE()) ORDER BY starttime DESC;";
 
             try
             {
@@ -422,36 +430,63 @@ namespace IssueSystem
 
             try
             {
-                if (ds.Tables[0].Rows.Count >= 1)
-                {
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                //if (ds.Tables[0].Rows.Count >= 1)
+                //{
+                //    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                //    {
+                //        string submitby = ds.Tables[0].Rows[i][0].ToString();
+                //        string linkid = ds.Tables[0].Rows[i][1].ToString();
+                //        string carpark = ds.Tables[0].Rows[i][2].ToString();
+                //        string station = ds.Tables[0].Rows[i][3].ToString();
+                //        string issue = ds.Tables[0].Rows[i][4].ToString();
+                //        string AttendedTime = ds.Tables[0].Rows[i][5].ToString().Substring(0, 19);
+                //        Alert alert = new Alert();
+                //        string cp = submitby + " attend a case on " + AttendedTime + "\r\n";
+                //        cp = cp + "Car Park : " + carpark + "\r\n";
+                //        cp = cp + "Station  : " + station + "\r\n";
+                //        cp = cp + "Issue  : " + issue + "\r\n";
+                //        cp = cp + "Issue id : " + linkid + "\r\n";
+                //        alert.textBox1.Text = cp;
+                //        LogClass.WirteLine(cp);
+                //        Point p = new Point(Screen.PrimaryScreen.WorkingArea.Width - alert.Width, Screen.PrimaryScreen.WorkingArea.Height - alert.Height);
+                //        alert.PointToScreen(p);
+                //        alert.Location = p;
+                //        Beautiful.AnimateWindow(alert.Handle, 1000, Beautiful.AW_BLEND);
+                //        alert.Show();
+                //        FirstFresh();
+                //    }
+
+                //}
+
+
+                    if (ds.Tables[0].Rows.Count >= 1)
                     {
-                        string submitby = ds.Tables[0].Rows[i][0].ToString();
-                        string linkid = ds.Tables[0].Rows[i][1].ToString();
-                        string carpark = ds.Tables[0].Rows[i][2].ToString();
-                        string station = ds.Tables[0].Rows[i][3].ToString();
-                        string issue = ds.Tables[0].Rows[i][4].ToString();
-                        string AttendedTime = ds.Tables[0].Rows[i][5].ToString().Substring(0, 19);
-                        Alert alert = new Alert();
-                        string cp = submitby + " attend a case on " + AttendedTime + "\r\n";
-                        cp = cp + "Car Park : " + carpark + "\r\n";
-                        cp = cp + "Station  : " + station + "\r\n";
-                        cp = cp + "Issue  : " + issue + "\r\n";
-                        cp = cp + "Issue id : " + linkid + "\r\n";
-                        alert.textBox1.Text = cp;
-                        LogClass.WirteLine(cp);
-                        Point p = new Point(Screen.PrimaryScreen.WorkingArea.Width - alert.Width, Screen.PrimaryScreen.WorkingArea.Height - alert.Height);
-                        alert.PointToScreen(p);
-                        alert.Location = p;
-                        Beautiful.AnimateWindow(alert.Handle, 1000, Beautiful.AW_BLEND);
-                        alert.Show();
-                        FirstFresh();
-                      
-                    }
-                }
-
-
-            }catch(Exception e)
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                        {
+                            string submitby = ds.Tables[0].Rows[i][0].ToString();
+                            string linkid = ds.Tables[0].Rows[i][1].ToString();
+                            string carpark = ds.Tables[0].Rows[i][2].ToString();
+                            string station = ds.Tables[0].Rows[i][3].ToString();
+                            string issue = ds.Tables[0].Rows[i][4].ToString();
+                            string AttendedTime = ds.Tables[0].Rows[i][5].ToString().Substring(0, 19);
+                            Alert alert = new Alert();
+                            string cp = submitby + " attend a case on " + AttendedTime + "\r\n";
+                            cp = cp + "Car Park : " + carpark + "\r\n";
+                            cp = cp + "Station  : " + station + "\r\n";
+                            cp = cp + "Issue  : " + issue + "\r\n";
+                            cp = cp + "Issue id : " + linkid + "\r\n";
+                            alert.textBox1.Text = cp;
+                            LogClass.WirteLine(cp);
+                            Point p = new Point(Screen.PrimaryScreen.WorkingArea.Width - alert.Width, Screen.PrimaryScreen.WorkingArea.Height - alert.Height);
+                            alert.PointToScreen(p);
+                            alert.Location = p;
+                            Beautiful.AnimateWindow(alert.Handle, 1000, Beautiful.AW_BLEND);
+                            alert.Show();
+                            FirstFresh();
+                        }
+                    }                       
+            }
+            catch(Exception e)
             {
                 LogClass.WirteLine("popup windows for new attend case error : " + e.ToString());
             }
@@ -503,8 +538,8 @@ namespace IssueSystem
         {
             #region  //normal refresh CarparkIssue without new issue detected
             string CommandText = @"select ID,CreateTime,CarPark,Station,Issue,Status,Priority,Reportby,CreatedBy,AttendBy from [carpark].[dbo].[IssueTable] where ReportTime>DATEADD(DAY, -2, GETDATE()) OR Status!='Closed' ORDER BY ReportTime DESC;
-                           select ID,CarPark,Status,CptaStaff,SpccStaff,RO,Details,ReportToCPTA,TimeGiven,TimeOnSite,ROAcualTimeOnSite,TimeCompletion from [carpark].[dbo].[IllegalParkingTable] where TimeGiven>DATEADD(DAY, -2, GETDATE())  OR Status='Closed' order by TimeGiven DESC;
-                            select id as ID,linkid as CaseID,posttime as SubmitTime,carpark as CarPark,station as Station,bo as Bo,followby as FollowUp,starttime as StartTime,endtime as EndTime,issue as Issue,solution as Solution,item as Item,qty as Qty,otstarttime as OverTimeStart,otendtime as OverTimeEnd,submitby as SubmitBy,ot as OverTimeMins from [carpark].[dbo].SRtable where starttime>DATEADD(DAY, -3, GETDATE()) ORDER BY starttime DESC;";
+                            select ID,CarPark,Status,CptaStaff,SpccStaff,RO,Details,ReportToCPTA,TimeGiven,TimeOnSite,ROAcualTimeOnSite,TimeCompletion from [carpark].[dbo].[IllegalParkingTable] where TimeGiven>DATEADD(DAY, -2, GETDATE())  OR Status!='Closed' order by TimeGiven DESC;
+                            select id as ID,linkid as CaseID,posttime as SubmitTime,carpark as CarPark,station as Station,bo as Bo,followby as FollowUp,starttime as StartTime,endtime as EndTime,issue as Issue,solution as Solution,item as Item,qty as Qty,otstarttime as OverTimeStart,otendtime as OverTimeEnd,submitby as SubmitBy,ot as OverTimeMins from [carpark].[dbo].SRtable where starttime>DATEADD(DAY, -2, GETDATE()) ORDER BY starttime DESC;";
             try
             {
                 rfds = SqlHelper.ExecuteDataset(constr, CommandType.Text, CommandText);
@@ -533,24 +568,24 @@ namespace IssueSystem
                 }
             }
 
-            //if (dataGridView2.Rows.Count > 0)
-            //{
-            //    foreach (DataGridViewRow dr in dataGridView2.Rows)
-            //    {
-            //        if (dr.Cells["Status"].Value.ToString() == "Open") // set color
-            //        {
-            //            dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Red;
-            //        }
-            //        else if (dr.Cells["Status"].Value.ToString() == "Closed")
-            //        {
-            //            dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Green;
-            //        }
-            //        else if (dr.Cells["Status"].Value.ToString() == "Follow Up")
-            //        {
-            //            dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Blue;
-            //        }
-            //    }
-            //}
+            if (dataGridView2.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow dr in dataGridView2.Rows)
+                {
+                    if (dr.Cells["Status"].Value.ToString() == "Open") // set color
+                    {
+                        dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else if (dr.Cells["Status"].Value.ToString() == "Closed")
+                    {
+                        dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else if (dr.Cells["Status"].Value.ToString() == "Follow Up")
+                    {
+                        dr.Cells["Status"].Style.ForeColor = System.Drawing.Color.Blue;
+                    }
+                }
+            }
             #endregion
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1078,6 +1113,12 @@ namespace IssueSystem
         {
             BarrierOpenReport bor = new BarrierOpenReport();
             bor.Show();
+        }
+
+        private void newBarrierRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewBarrierRemote NewbarrierReomte = new NewBarrierRemote();
+            NewbarrierReomte.Show();
         }
     }
 }

@@ -66,9 +66,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\IrisSkin4.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -95,6 +92,12 @@
     </Compile>
     <Compile Include="BarrierOpenReport.Designer.cs">
       <DependentUpon>BarrierOpenReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarrierPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarrierPage.Designer.cs">
+      <DependentUpon>BarrierPage.cs</DependentUpon>
     </Compile>
     <Compile Include="carparkDataSet.cs">
       <DependentUpon>carparkDataSet.xsd</DependentUpon>
@@ -171,6 +174,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>List.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NewBarrierRemote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewBarrierRemote.Designer.cs">
+      <DependentUpon>NewBarrierRemote.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceReport.cs" />
     <Compile Include="ServiceReportForm.cs">
@@ -337,6 +346,9 @@
     <EmbeddedResource Include="BarrierOpenReport.resx">
       <DependentUpon>BarrierOpenReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BarrierPage.resx">
+      <DependentUpon>BarrierPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangeDeleteUser.resx">
       <DependentUpon>ChangeDeleteUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,6 +380,9 @@
       <DependentUpon>CreateROissue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BarrierOpenReport.rdlc" />
+    <EmbeddedResource Include="NewBarrierRemote.resx">
+      <DependentUpon>NewBarrierRemote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServiceReports.rdlc" />
     <EmbeddedResource Include="ServiceReportForm.resx">
       <DependentUpon>ServiceReportForm.cs</DependentUpon>
@@ -508,6 +523,33 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="WMPLib">
       <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>

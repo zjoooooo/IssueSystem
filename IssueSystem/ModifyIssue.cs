@@ -442,6 +442,7 @@ namespace IssueSystem
                 this.Cb_Bacth.Enabled = true;
                 this.Cb_BO.Enabled = true;
                 this.cb_follower.Enabled = true;
+                IssueList.Enabled = true;
             }
             else if (comboBox1.SelectedItem.ToString() == "Closed")
             {

@@ -31,8 +31,8 @@ namespace IssueSystem
 
         public void GetList()
         {
-             string CommandText = "select name,ip from carpark.dbo.Whole";
-             string CommandText1 = "select name,ip from carpark.dbo.Whole where batch not in('IPD','commercial')";
+             string CommandText = "select name,ip,batch from carpark.dbo.Whole order by name";
+             string CommandText1 = "select name,ip,batch from carpark.dbo.Whole where batch not in('IPD','commercial','MOE') order by name";
              try
              {
                  ds = SqlHelper.ExecuteDataset(main.constr, CommandType.Text, CommandText);
