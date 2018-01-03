@@ -119,7 +119,6 @@ namespace IssueSystem
             {
                 if (!(ip == null))
                 {
-
                     int timeout = 5000;
                     string data = "Test Data!";
                     Ping p = new Ping();
@@ -232,6 +231,7 @@ namespace IssueSystem
                 //LogClass.WirteLogForMovement(kv.Key + " ping ok.");
                 string connectString = "Data Source=" + kv.Value + ";uid=sa;pwd=yzhh2007;database=" + kv.Key;
                 DataSet ds = null;
+
                 try
                 {
                     ds = SqlHelper.ExecuteDataset(connectString, CommandType.Text, cmd, para);
@@ -313,6 +313,10 @@ namespace IssueSystem
                 stationDIC.Clear();
                 Trans_type.Clear();
                 LogClass.WirteLogForMovement($"------------{kv.Key}------------");
+                if (kv.Key == "C21M")
+                {
+                    continue;
+                }
                 string connectString = "Data Source=" + kv.Value + ";uid=sa;pwd=yzhh2007;database=" + kv.Key;
                 DataSet ds = null;
                 try
@@ -360,6 +364,7 @@ namespace IssueSystem
                             catch(SqlException sqle)
                             {
                                 LogClass.WirteLogForMovement($"trans_type_id={trans_type_id},entry_station_id={entry_station_id},exit_station_id={exit_station_id},{sqle.ToString()}");
+                                continue;
                             }
                         }
                         dt.Columns.Remove("trans_type_id");
