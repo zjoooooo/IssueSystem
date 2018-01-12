@@ -45,14 +45,13 @@ namespace IssueSystem
             {
                  CommandText = @"select name,ip,batch from Whole where batch ='" + batchName + "'";
             }          
-           // string CommandText = @"select name,ip,batch from Whole where name='BBM5BBM6'";
             DataSet ds = null;
             try
             {
                 ds = SqlHelper.ExecuteDataset(constr, CommandType.Text, CommandText);
                 foreach (DataRow ls in ds.Tables[0].Rows)
                 {
-                    if (ls[0].ToString().Equals("BE45"))
+                    if (ls[0].ToString().Equals("BE45")|| ls[0].ToString().Equals("Bedok pgs")|| ls[0].ToString().Equals("HOLIDAY INN"))
                     {
                         continue;
                     }
@@ -158,8 +157,7 @@ namespace IssueSystem
             comboBox1.SelectedIndex = 0;
         }
         private void button1_Click(object sender, EventArgs e)
-        {
-            InitCarparkList();
+        {            
             if ((textBox1.Text == null) || (textBox1.Text == ""))
             {
                 MessageBox.Show("No content found for IU/Cashcard");
@@ -168,6 +166,7 @@ namespace IssueSystem
             //For Testing commit github 111
             if (button1.Text == "Start")
             {
+                InitCarparkList();
                 button2.Enabled = false;
                 string IU = this.textBox1.Text.Trim();
                 string picker1 = this.dateTimePicker1.Value.ToString("yyyy-MM-dd") + " 00:00:00";

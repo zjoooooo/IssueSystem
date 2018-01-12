@@ -60,7 +60,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdventNetSnmp">
-      <HintPath>..\..\..\Barrier Controller C#\AdventNetSnmp.dll</HintPath>
+      <HintPath>bin\Debug\AdventNetSnmp.dll</HintPath>
     </Reference>
     <Reference Include="IrisSkin4, Version=2006.3.22.45, Culture=neutral, PublicKeyToken=127be25a6db25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
